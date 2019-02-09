@@ -1,0 +1,47 @@
+class Clock {
+  constructor() {
+    this.clock = document.querySelector('.c-clock');
+    this.secondHand = document.querySelector('.c-clock__hand--second');
+    this.minuteHand = document.querySelector('.c-clock__hand--minute');
+    this.hourHand = document.querySelector('.c-clock__hand--hour');
+    this.moveHands();
+    this.addLoadedClass();
+  }
+  
+  moveHands() {
+    setInterval(() => {
+      const currentTime = new Date();
+      this.moveSecond(currentTime);
+      this.moveMinute(currentTime);
+      this.moveHour(currentTime);
+    }, 1000);
+  }
+  
+  moveSecond(currentTime) {
+    const seconds = currentTime.getSeconds();
+    const degrees = (seconds / 60) * 360;
+    this.secondHand.style.transform = `rotate(${degrees}deg)`;
+  }
+  
+  moveMinute(currentTime) {
+    const minutes = currentTime.getMinutes();
+    const seconds = currentTime.getSeconds();
+    const degrees = ((minutes + (seconds / 60)) / 60) * 360;
+    this.minuteHand.style.transform = `rotate(${degrees}deg)`;
+  }
+  
+  moveHour(currentTime) {
+    const hours = currentTime.getHours();
+    const minutes = currentTime.getMinutes();
+    const degrees = ((hours + (minutes / 60)) / 12) * 360;
+    this.hourHand.style.transform = `rotate(${degrees}deg)`;
+  }
+  
+  addLoadedClass() {
+    setTimeout(() => (
+      this.clock.classList.add('is-loaded')
+    ), 1000);
+  }
+}
+
+const clock = new Clock();

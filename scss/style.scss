@@ -1,0 +1,68 @@
+$yellow-light: #fff9c4;
+$gray-light: #eee;
+
+body {
+  display: flex;
+  min-height: 100vh;
+  background: $yellow-light;
+}
+
+.c-clock {
+  width: 200px;
+  height: 200px;
+  position: relative;
+  border: 10px solid $gray-light;
+  border-radius: 50%;
+  margin: auto;
+  background: white;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+.c-clock.is-loaded {
+  opacity: 1;
+}
+
+.c-clock__hand {
+  position: absolute;
+  left: 50%;
+  transform-origin: 50% 100%;
+}
+
+.c-clock__hand--hour,
+.c-clock__hand--minute {
+  width: 6px;
+  margin-left: -3px;
+  background: black;
+}
+
+.c-clock__hand--hour {
+  height: 62px;
+  top: 38px;
+}
+
+.c-clock__hand--minute,
+.c-clock__hand--second {
+  height: 95px;
+  top: 5px;
+}
+
+.c-clock__hand--second {
+  width: 2px;
+  margin-left: -1px;
+  background: red;
+}
+
+.c-clock__center {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 20px;
+  height: 20px;
+  border: 4px solid $gray-light;
+  border-radius: 50%;
+  margin-left: -10px;
+  margin-top: -10px;
+  background: white;
+  box-sizing: border-box;
+}
